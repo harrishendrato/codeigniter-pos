@@ -4,7 +4,7 @@
 
 <a href="<?php echo base_url().'user/customer_add'; ?>" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-plus"></span> New Customer</a> 
 <br/><br/> 
-<div class="table-responsive"> 
+<div class="table-responsive">
 	<table class="table table-bordered table-striped table-hover" id="table-datatable"> 
 		<thead> 
 			<tr> 
@@ -18,17 +18,17 @@
 		<tbody> 
 			<?php 
 			$no = 1; 
-			foreach($customers as $c){ 
+			foreach($customers as $cts){ 
 				?>
 				<tr> 
 					<td><?php echo $no++; ?></td> 
-					<td><?php echo $c->name ?></td> 
-					<td><?php echo $c->address ?></td> 
-					<td><?php echo $c->created_at ?></td> 
-					<td><?php echo $c->updated_at ?></td>
+					<td><?php echo $cts->name ?></td> 
+					<td><?php echo $cts->address ?></td> 
+					<td><?php echo $cts->created_at ?></td> 
+					<td><?php echo $cts->updated_at ?></td>
 				<td> 
-					<a class="btn btn-warning btn-sm" href="<?php echo base_url().'user/customer_edit/'.$c->id; ?>"><span class="glyphicon glyphicon-plus"></span> Edit</a> 
-					<a class="btn btn-danger btn-sm" href="<?php echo base_url().'user/customer_delete/'.$c->id; ?>"><span class="glyphicon glyphicon-trash"></span> Delete</a>
+					<a class="btn btn-warning btn-sm" href="<?php echo base_url().'user/customer_edit/'.$cts->id; ?>"><span class="glyphicon glyphicon-plus"></span> Edit</a> 
+					<a class="btn btn-danger btn-sm" href="<?php echo base_url().'user/customer_delete/'.$cts->id; ?>"><span class="glyphicon glyphicon-trash"></span> Delete</a>
 				</td> 
 			</tr> 
 			<?php 
