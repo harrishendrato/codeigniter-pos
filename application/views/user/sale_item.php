@@ -76,7 +76,7 @@
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
                 <a href="#" class="nav-link dropdown-toggle" id="user" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo "<b>".$this->session->userdata('name'); ?></b></span>
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo "<b>" .$this->session->userdata('name'); ?></b></span>
                 <img class="img-profile rounded-circle">
                 </a>
               <!-- Dropdown - User Information -->
@@ -97,13 +97,18 @@
 
 <!-- Page Heading -->
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-  <h1 class="h1 mb-0 text-gray-800">Sale Item Lists</h1>
+  <h1 class="h1 mb-0 text-gray-800">Sale Item</h1>
   <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
 </div>  
 <br/>
-<div class="table-responsive">
-	<table class="table table-bordered table-striped table-hover" id="table-datatable"> 
-		<thead> 
+<div class="card shadow mb-4">
+            <div class="card-header py-3">
+              <h6 class="m-0 font-weight-bold text-primary">Sale Item Lists</h6>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                  <thead> 
 			<tr> 
 				<th>No</th>  
 				<th>Price</th>
