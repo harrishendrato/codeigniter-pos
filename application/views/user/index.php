@@ -38,7 +38,7 @@
       </li>
 
         <li class="nav-item">
-        <a class="nav-link" href="<?php echo base_url().'user/category_product' ?>">
+        <a class="nav-link" href="<?php echo base_url().'user/category' ?>">
           <i class="fas fa-check-circle"></i>
           <span>Category Product</span></a>
       </li>
@@ -50,7 +50,7 @@
       </li>
 
             <li class="nav-item">
-        <a class="nav-link" href="<?php echo base_url().'user/sales_item' ?>">
+        <a class="nav-link" href="<?php echo base_url().'user/sale_item' ?>">
           <i class="fas fa-check-circle"></i>
           <span>Sale Item</span></a>
       </li>
@@ -83,9 +83,9 @@
                 </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                <a class="dropdown-item" href="<?php echo base_url().'user/logout'?>">
                   <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Logged out
+                  Logout
                 </a>
               </div>
             </li>

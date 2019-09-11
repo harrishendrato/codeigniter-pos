@@ -37,15 +37,21 @@
                   <div class="text-center">
                     <h1 class="h4 text-gray-900 mb-4">POS APPLICATION</h1>
                     <?php 
-                        if(isset($_GET['message'])){ 
-                          if($_GET['message'] == "failed"){ 
+                        if(isset($_GET['message']))
+                        { 
+                          if($_GET['message'] == "failed")
+                          { 
                             echo "<div class='alert alert-danger'>Login failed! Invalid Email and Password.</div>"; 
-                              }else if($_GET['message'] == "loggedout"){ 
-                       echo "<div class='alert alert-danger'>You have logged out.</div>";
-                      }else if($_GET['message'] == "notloggedin"){ 
-                   echo "<div class='alert alert-success'>Please login first.</div>";
-                     }
-                    }
+                          }
+                          else if($_GET['message'] == "logout")
+                          { 
+                            echo "<div class='alert alert-danger'>You have logout.</div>";
+                          }
+                          else if($_GET['message'] == "notlogin")
+                          { 
+                            echo "<div class='alert alert-success'>Please login first.</div>";
+                          }
+                        }
                         ?>
                   </div>
                   <form method="post" action="<?php echo base_url().'welcome/login' ?>">

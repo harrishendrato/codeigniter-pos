@@ -8,7 +8,7 @@ class User extends CI_Controller
 		parent::__construct();
 		if($this->session->userdata('status') != "login")
 		{
-			redirect(base_url().'welcome?message=notloggedin');
+			redirect(base_url().'welcome?message=notlogin');
 		}
 	}
 	
@@ -25,7 +25,7 @@ class User extends CI_Controller
 	function logout()
 	{ 
 		$this->session->sess_destroy();
-		redirect(base_url().'welcome?message=loggedout'); 
+		redirect(base_url().'welcome?message=logout'); 
 	}
 
 	function customer()

@@ -23,7 +23,6 @@
       </li>
       <hr class="sidebar-divider my-0">
       <!-- Divider -->
-      </hr>
       <li class="nav-item">
         <a class="nav-link" href="<?php echo base_url().'user/customer'?>">
           <i class="fas fa-user"></i>
@@ -43,7 +42,7 @@
           <span>Category</span></a>
       </li>
 
-            <li class="nav-item">
+        <li class="nav-item">
         <a class="nav-link" href="<?php echo base_url().'user/sale' ?>">
           <i class="fas fa-check-circle"></i>
           <span>Sale</span></a>
@@ -83,9 +82,9 @@
                 </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+              <a class="dropdown-item" href="<?php echo base_url().'user/logout'?>">
                   <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Logged out
+                  Logout
                 </a>
               </div>
             </li>
