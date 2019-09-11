@@ -98,7 +98,7 @@
 
 <!-- Page Heading -->
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-  <h1 class="h1 mb-0 text-gray-800">Category Products</h1>
+  <h1 class="h1 mb-0 text-gray-800">Data Sales</h1>
   <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
 </div> 
 <br/> 
@@ -107,7 +107,8 @@
 		<thead> 
 			<tr> 
 				<th>No</th> 
-				<th>Name</th> 
+        <th>Customer ID</th>
+        <th>Total</th> 
 				<th>Created at</th> 
 				<th>Updated at</th>
 				<th></th>
@@ -116,16 +117,17 @@
 		<tbody> 
 			<?php 
 			$no = 1; 
-			foreach($categories as $c){ 
+			foreach($sales as $s){ 
 				?> 
 				<tr> 
 					<td><?php echo $no++; ?></td> 
-					<td><?php echo $c->name ?></td> 
-					<td><?php echo $c->created_at ?></td> 
-					<td><?php echo $c->updated_at ?></td>
+					<td><?php echo $s->customer_id ?></td> 
+					<td><?php echo $s->total ?></td> 
+          <td><?php echo $s->created_at ?></td>
+          <td><?php echo $s->updated_at ?></td>
 					<td> 
-						<a class="btn btn-sm btn-warning" href="<?php echo base_url().'user/category_edit/'.$c->id; ?>"><span class="glyphicon glyphicon-wrench"></span> Edit</a> 
-						<a class="btn btn-sm btn-danger" href="<?php echo base_url().'user/category_delete/'.$c->id; ?>"><span class="glyphicon glyphicon-trash"></span> delete</a> 
+						<a class="btn btn-sm btn-warning" href="<?php echo base_url().'user/sale_edit/'.$s->id; ?>"><span class="glyphicon glyphicon-wrench"></span> Edit</a> 
+						<a class="btn btn-sm btn-danger" href="<?php echo base_url().'user/sale_delete/'.$s->id; ?>"><span class="glyphicon glyphicon-trash"></span> delete</a> 
 					</td> 
 				</tr> 
 				<?php 
@@ -133,5 +135,5 @@
 			?> 
 		</tbody>
 	</table>
-	<a href="<?php echo base_url().'user/category_add'; ?>" class="btn btn-sm btn-primary"><span class='glyphicon glyphicon-plus'></span> New Category</a> 
+	<a href="<?php echo base_url().'user/sale_add'; ?>" class="btn btn-sm btn-primary"><span class='glyphicon glyphicon-plus'></span> New Sales</a> 
 </div>
