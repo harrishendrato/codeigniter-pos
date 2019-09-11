@@ -73,6 +73,7 @@
 
           <!-- Topbar Navbar -->
           <ul class="navbar-nav ml-auto">
+            <div class="topbar-divider d-none d-sm-block"></div>
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
                 <a href="#" class="nav-link dropdown-toggle" id="user" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
@@ -97,75 +98,37 @@
 
 <!-- Page Heading -->
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-  <h1 class="h1 mb-0 text-gray-800">Data Products</h1>
+  <h1 class="h1 mb-0 text-gray-800">New Sale Item</h1>
   <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
-</div> 
-<br/> 
-<div class="table-responsive"> 
-	<table class="table table-bordered table-hover table-striped" id="table-datatable"> 
-		<thead> 
-			<tr> 
-				<th>No</th> 
-				<th>Name</th> 
-				<th>Price</th> 
-				<th>Category ID</th> 
-				<th>Created at</th> 
-				<th>Updated at</th>
-				<th></th>
-			</tr> 
-		</thead> 
-		<tbody> 
-			<?php 
-			$no = 1; 
-			foreach($products as $p){ 
-				?> 
-				<tr> 
-					<td><?php echo $no++; ?></td> 
-					<td><?php echo $p->name ?></td> 
-					<td><?php echo $p->price ?></td> 
-					<td><?php echo $p->category_id ?></td> 
-					<td><?php echo $p->created_at ?></td> 
-					<td><?php echo $p->updated_at ?></td> 
-					<td> 
-						<a class="btn btn-sm btn-warning" href="<?php echo base_url().'user/product_edit/'.$p->id; ?>"><span class="glyphicon glyphicon-wrench"></span> Edit</a> 
-						<a class="btn btn-sm btn-danger" href="<?php echo base_url().'user/product_delete/'.$p->id; ?>"><span class="glyphicon glyphicon-trash"></span> Delete</a> 
-					</td> 
-				</tr> 
-				<?php 
-			} 
-			?> 
-		</tbody>
-	</table>
-	<a href="<?php echo base_url().'user/product_add'; ?>" class="btn btn-sm btn-primary"><span class='glyphicon glyphicon-plus'></span> New Product</a> 
-</div>
-</div>
-</div>
-<footer class="sticky-footer bg-white">
-        <div class="container my-auto">
-          <div class="copyright text-center my-auto">
-            <span>Copyright &copy; Harris Hendrato 2019</span>
-          </div>
-        </div>
-      </footer>
-    </div>
-  </div>
-  <a class="scroll-to-top rounded" href="#page-top">
-    <i class="fas fa-angle-up"></i>
-  </a>
-  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">×</span>
-          </button>
-        </div>
-        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-        <div class="modal-footer">
-          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" href="<?php echo base_url().'user/logout'?>">Logout</a>
-        </div>
-      </div>
-    </div>
-  </div> 
+</div>  
+<br/>
+<form action="<?php echo base_url().'user/sale_item_update' ?>" method="post"> 
+	<div class="form-group"> 
+		<label>Price</label> 
+		<input type="text" name="price" class="form-control"> 
+		<?php echo form_error('price'); ?>
+		</div> 
+        <div class="form-group"> 
+			<label>Subtotal</label> 
+			<input type="number" name="subtotal" class="form-control"> 
+		</div> 
+        <div class="form-group"> 
+			<label>Product ID</label> 
+			<input type="number" name="Product_id" class="form-control"> 
+		</div> 
+        <div class="form-group"> 
+			<label>Sale ID</label> 
+			<input type="number" name="sale_id" class="form-control"> 
+		</div> 
+		<div class="form-group"> 
+			<label>Created at</label> 
+			<input type="date" name="created_at" class="form-control"> 
+		</div> 
+		<div class="form-group"> 
+			<label>Updated at</label> 
+			<input type="date" name="updated_at" class="form-control"> 
+		</div> 
+		<div class="form-group"> 
+			<input type="submit" value="Save" class="btn btn-primary"> 
+		</div>
+</form>

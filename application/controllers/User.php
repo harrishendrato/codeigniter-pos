@@ -123,7 +123,7 @@ class User extends CI_Controller
 		$where = array( 
 			'id' => $id
 		); 
-		$this->m_pos->delete_data($where,'customer');
+		$this->m_pos->delete_data($where,'customers');
 		redirect(base_url().'user/customer'); 
 	} 
 
