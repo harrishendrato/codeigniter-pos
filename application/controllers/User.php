@@ -289,9 +289,9 @@ class User extends CI_Controller
 		function sale()
 		{ 
 			$data['sales'] = $this->m_pos->get_data('sales')->result();
-			 $this->load->view('user/header'); 
-			 $this->load->view('user/mobil',$data); 
-			 $this->load->view('user/footer'); 
+			$this->load->view('user/header'); 
+			$this->load->view('user/sale',$data); 
+			$this->load->view('user/footer'); 
 		}
 
 		function sale_add(){ 
