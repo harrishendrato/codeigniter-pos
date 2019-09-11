@@ -107,8 +107,8 @@
 		<thead> 
 			<tr> 
 				<th>No</th> 
-        <th>Customer ID</th>
-        <th>Total</th> 
+                <th>Customer ID</th>
+                <th>Total</th> 
 				<th>Created at</th> 
 				<th>Updated at</th>
 				<th></th>
@@ -123,8 +123,8 @@
 					<td><?php echo $no++; ?></td> 
 					<td><?php echo $s->customer_id ?></td> 
 					<td><?php echo $s->total ?></td> 
-          <td><?php echo $s->created_at ?></td>
-          <td><?php echo $s->updated_at ?></td>
+                    <td><?php echo $s->created_at ?></td>
+                    <td><?php echo $s->updated_at ?></td>
 					<td> 
 						<a class="btn btn-sm btn-warning" href="<?php echo base_url().'user/sale_edit/'.$s->id; ?>"><span class="glyphicon glyphicon-wrench"></span> Edit</a> 
 						<a class="btn btn-sm btn-danger" href="<?php echo base_url().'user/sale_delete/'.$s->id; ?>"><span class="glyphicon glyphicon-trash"></span> delete</a> 

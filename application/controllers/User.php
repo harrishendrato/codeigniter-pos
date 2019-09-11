@@ -286,202 +286,94 @@ class User extends CI_Controller
 		redirect(base_url().'user/category'); 
 		} 
 
-		function sale(){ 
-			$data['sales'] = $this->m_pos->get_data('sales')->result(); 
-			$this->load->view('user/header'); 
-			$this->load->view('user/sale',$data); 
-			$this->load->view('user/footer'); 
+		function sale()
+		{ 
+			$data['sales'] = $this->m_pos->get_data('sales')->result();
+			 $this->load->view('user/header'); 
+			 $this->load->view('user/mobil',$data); 
+			 $this->load->view('user/footer'); 
 		}
-	
+
 		function sale_add(){ 
 			$this->load->view('user/header'); 
-			$this->load->view('user/sale_add');
+			$this->load->view('user/sale_add'); 
 			$this->load->view('user/footer'); 
 		}
 	
 		function sale_add_act(){ 
-			$customer_id = $this->input->post('customer_id'); 
-			$total = $this->input->post('total'); 
-			$created_at = $this->input->post('created_at');
-			$updated_at = $this->input->post('updated_at'); 
-			$this->form_validation->set_rules('customer_id','Customer ID','required');
-			$this->form_validation->set_rules('total','Total','required'); 
-			if($this->form_validation->run() != false){ 
-				$data = array( 
-					'customer_id' => $customer_id, 
-					'total' => $total, 
-					'created_at' => $created_at, 
-					'updated_at' => $updated_at
-				); 
-				$this->m_pos->insert_data($data,'sales'); 
-				redirect(base_url().'user/sale'); 
+			$customer_id = $this->input->post('cusutomer_id'); 
+			$plat = $this->input->post('plat'); 
+			$warna = $this->input->post('warna'); 
+			$tahun = $this->input->post('tahun'); 
+			$status = $this->input->post('status'); 
+			$this->form_validation->set_rules('merk','Merk Mobil','required'); 
+			$this->form_validation->set_rules('status','Status Mobil','required'); 
+	
+				if($this->form_validation->run() != false){ 
+					$data = array( 
+					'mobil_merk' => $merk, 
+					'mobil_plat' => $plat, 
+					'mobil_warna' => $warna, 
+					'mobil_tahun' => $tahun, 
+					'mobil_status' => $status 
+				);
+				$this->m_rental->insert_data($data,'mobil'); 
+				redirect(base_url().'admin/mobil'); 
 			}else{ 
-				$this->load->view('user/header'); 
-				$this->load->view('user/sale_add'); 
-				$this->load->view('user/footer'); 
+				$this->load->view('admin/header'); 
+				$this->load->view('admin/mobil_add');
+				$this->load->view('admin/footer'); 
 			} 
 		}
 	
-		function sale_edit($id){ 
+		function mobil_edit($id){ 
 			$where = array( 
-				'id' => $id 
+				'mobil_id' => $id 
 			); 
-			$data['sales'] = $this->m_pos->edit_data($where,'sales')->result(); 
-			$this->load->view('user/header'); 
-			$this->load->view('user/sales_edit',$data); 
-			$this->load->view('user/footer'); 
+			$data['mobil'] = 
+			$this->m_rental->edit_data($where,'mobil')->result(); 
+			$this->load->view('admin/header'); 
+			$this->load->view('admin/mobil_edit',$data);
+			 $this->load->view('admin/footer'); 
 		}
 	
-		function sale_update(){
-			$id = $this->input->post('id');
-			$customer_id = $this->input->post('customer_id');
-			$total = $this->input->post('total');
-			$created_at = $this->input->post('created_at');
-			$updated_at = $this->input->post('updated_at');
-			$this->form_validation->set_rules('customer_id','Customer ID','required');
-	
-	
-		if($this->form_validation->run() != false){
-			$where = array(
-				'id' => $id
-			);
-			$data = array(
-				'customer_id' => $customer_id,
-				'total' => $total,
-				'created_at' => $created_at,
-				'updadated_at' => $updated_at
-			);
-			$this->m_pos->update_data($where,$data,'sales');
-			redirect(base_url().'user/sale');
-		}else{
-			$where = array(
-				'id' => $id
-			);
-			$data['sales'] = $this->m_pos->edit_data($where,'sales')->result();
-			$this->load->view('user/header');
-			$this->load->view('user/sale_edit',$data);
-			$this->load->view('user/footer');
-			}
+		function mobil_update(){ 
+			$id = $this->input->post('id'); $merk = $this->input->post('merk'); 
+				$plat = $this->input->post('plat'); 
+				$warna = $this->input->post('warna'); 
+				$tahun = $this->input->post('tahun'); 
+				$status = $this->input->post('status'); 
+				$this->form_validation->set_rules('merk','Merk Mobil','required'); 
+				$this->form_validation->set_rules('status','Status Mobil','required'); 
+				if($this->form_validation->run() != false){ 
+					$where = array( 
+						'mobil_id' => $id 
+					); 
+					$data = array( 
+						'mobil_merk' => $merk, 
+						'mobil_plat' => $plat, 
+						'mobil_warna' => $warna, 
+						'mobil_tahun' => $tahun, 
+						'mobil_status' => $status 
+					); 
+					$this->m_rental->update_data($where,$data,'mobil'); redirect(base_url().'admin/mobil'); 
+				}else{ 
+					$where = array( 
+						'mobil_id' => $id 
+					); 
+					$data['mobil'] = $this->m_rental->edit_data($where,'mobil')->result(); 
+					$this->load->view('admin/header');
+					 $this->load->view('admin/mobil_edit',$data); 
+					 $this->load->view('admin/footer'); 
+			} 
 		}
 	
-		function sale_delete($id){
-			$where = array(
-				'id' => $id
-			);
-			$this->m_pos->delete_data($where,'sales');
-			redirect(base_url().'user/sale');
-		}
-
-			function sale_item()
-			{
-				$data['sale_items'] = $this->m_pos->get_data('sale_items')->result();
-				$this->load->view('user/header');
-				$this->load->view('user/sale_item',$data);
-				$this->load->view('user/footer');
-			}
-
-			function sale_item_add()
-			{
-				$this->load->view('user/header');
-				$this->load->view('user/sale_item_add');
-				$this->load->view('user/footer');
-			}
-
-			function sale_item_add_act()
-			{
-				$qty = $this->input->post('qty');
-				$price = $this->input->post('price');
-				$subtotal = $this->input->post('subtotal');
-				$product_id = $this->input->post('product_id');
-				$sale_id = $this->input->post('sale_id');
-				$created_at = $this->input->post('created_at');
-				$updated_at = $this->input->post('updated_at');
-				$this->form_validation->set_rules('price','Price','required');
-				$this->form_validation->set_rules('subtotal','Subtotal','required');
-				if($this->form_validation->run() != false)
-				{
-					$data = array
-					(
-						'qty' => $qty,
-						'price' => $price,
-						'subtotal' => $subtotal,
-						'product_id' => $product_id,
-						'sale_id' => $sale_id,
-						'created_at' => $created_at,
-						'updated_at' => $updated_at
-					);
-					$this->m_pos->insert_data($data, 'sale_items');
-					redirect(base_url().'user/sale_item');
-				}
-				else
-				{
-					$this->load->view('user/header');
-					$this->load->view('user/sale_item_add');
-					$this->load->view('user/footer');
-				}
-			}
-
-			function sale_item_edit($id)
-			{
-				$where = array
-				(
-					'id' => $id
-				);
-				$data['sale_items'] = $this->m_pos->edit_data($where, 'sale_items')->result();
-				$this->load->view('user/header');
-				$this->load->view('user/sale_item_edit', $data);
-				$this->load->view('user/footer');
-			}
-
-			function sale_item_update()
-			{
-				$id = $this->input->post('id');
-				$qty = $this->input->post('qty');
-				$price = $this->input->post('price');
-				$subtotal = $this->input->post('subtotal');
-				$product_id = $this->input->post('product_id');
-				$sale_id = $this->input->post('sale_id');
-				$created_at = $this->input->post('created_at');
-				$updated_at = $this->input->post('updated_at');
-				$this->form_validation->set_rules('id','ID','required');
-
-				if($this->form_validation->run() != false)
-				{
-					$where = array(
-						'id' => $id
-					);
-				
-					$data = array(
-						'qty' => $qty,
-						'price' => $price,
-						'subtotal' => $subtotal,
-						'product_id' => $product_id,
-						'sale_id' => $sale_id,
-						'created_at' => $created_at,
-						'updated_at' => $updated_at
-					);
-					$this->m_Pos->update_data($where,$data,'sale_items');
-					redirect(base_url().'user/sale_item');
-				}
-				else
-				{
-					$where = array(
-						'id' => $id
-					);
-					$data['sale_items'] = $this->m_pos->edit_data($where,'sale_items')->result();
-					$this->load->view('user/header');
-					$this->load->view('user/sale_item_edit', $data);
-					$this->load->view('user/footer');
-				}
-			}
-
-			function sale_item_delete($id)
-			{
-				$where = array(
-					'id' => $id
-				);
-				$this->m_pos->delete_data($where,'sale_items');
-				redirect(base_url().'user/sale_item');
-			}
+		function mobil_hapus($id){ 
+			$where = array( 
+				'mobil_id' => $id
+				); 
+			$this->m_rental->delete_data($where,'mobil');
+			redirect(base_url().'admin/mobil'); 
+			} 
 }
 }
