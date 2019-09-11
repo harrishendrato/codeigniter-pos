@@ -17,7 +17,7 @@
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item active">
-        <a class="nav-link" href="index.html">
+        <a class="nav-link" href="<?php echo base_url().'user/index' ?>">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Dashboard</span></a>
       </li>
@@ -25,34 +25,34 @@
       <!-- Divider -->
       </hr>
       <li class="nav-item">
-        <a class="nav-link" href="charts.html">
+        <a class="nav-link" href="<?php echo base_url().'user/customer'?>">
           <i class="fas fa-user"></i>
           <span>Customer</span></a>
       </li>
 
       <!-- Nav Item - Tables -->
       <li class="nav-item">
-        <a class="nav-link" href="tables.html">
+        <a class="nav-link" href="<?php echo base_url().'user/product' ?>">
           <i class="fas fa-check-circle"></i>
           <span>Product</span></a>
       </li>
 
         <li class="nav-item">
-        <a class="nav-link" href="tables.html">
+        <a class="nav-link" href="<?php echo base_url().'user/category_product' ?>">
           <i class="fas fa-check-circle"></i>
           <span>Category Product</span></a>
       </li>
 
             <li class="nav-item">
-        <a class="nav-link" href="tables.html">
+        <a class="nav-link" href="<?php echo base_url().'user/sale' ?>">
           <i class="fas fa-check-circle"></i>
-          <span>Transaction</span></a>
+          <span>Sale</span></a>
       </li>
 
             <li class="nav-item">
-        <a class="nav-link" href="tables.html">
+        <a class="nav-link" href="<?php echo base_url().'user/sales_item' ?>">
           <i class="fas fa-check-circle"></i>
-          <span>Detail Transaction</span></a>
+          <span>Sale Item</span></a>
       </li>
     </ul>
     <!-- End of Sidebar -->
@@ -106,44 +106,38 @@
 
           <!-- Content Row -->
           <div class="row"> 
-  <div class="col-lg-4"> 
-    <div class="panel panel-default">
-      <div class="panel-heading"> 
-        <h3 class="panel-title"><i class="glyphicon glyphicon-random arrow-right"></i> Customers</h3> 
-      </div> 
-      <div class="panel-body"> 
-        <div class="list-group"> 
-          <?php foreach($customers as $c){ ?> 
-            <a href="#" class="list-group-item"> 
-              <i class="glyphicon glyphicon-user"></i> <?php echo $c->name; ?> 
-            </a> 
-            <?php } ?> </div> 
-            <div class="text-right"> 
-              <a href="<?php echo base_url().'user/customer' ?>">See for all <i class="glyphicon glyphicon-arrow-right"></i></a> 
-            </div> 
-          </div> 
-        </div> 
-      </div> 
-      <div class="col-lg-3"> 
-        <div class="panel panel-default"> 
-          <div class="panel-heading"> 
-            <h3 class="panel-title"><i class="glyphicon glyphicon-user o"></i> New Customers</h3> 
-          </div> 
-          <div class="panel-body"> 
+            <div class="col-lg-4"> 
+              <div class="panel panel-default">
+              <div class="panel-heading"> 
+                <h3 class="panel-title"><i class="glyphicon glyphicon-random arrow-right"></i> Customers</h3> 
+              </div> 
+            <div class="panel-body"> 
             <div class="list-group"> 
-              <?php foreach($products as $p){ ?> <a href="#" class="list-group-item">
-                <i class="glyphicon glyphicon-user"></i> <?php echo $p->name; ?> 
-              </a> 
-              <?php } ?> 
-            </div> 
-            <div class="text-right"> 
-              <a href="<?php echo base_url().'admin/kostumer' ?>">See for all <i class="glyphicon glyphicon-arrow-right"></i></a> 
+              <?php foreach($customers as $cts){ ?> 
+                <a href="<?php echo base_url().'user/customer' ?>" class="list-group-item"> 
+                  <i class="glyphicon glyphicon-user"></i> <?php echo $cts->name; ?> 
+                </a> 
+                <?php } ?> </div> 
+              </div> 
             </div> 
           </div> 
-        </div> 
-      </div>
-            </div>
-            </div>
+          <div class="col-lg-3"> 
+          <div class="panel panel-default"> 
+            <div class="panel-heading"> 
+              <h3 class="panel-title"><i class="glyphicon glyphicon-user o"></i> New Customers</h3> 
+            </div> 
+            <div class="panel-body"> 
+              <div class="list-group"> 
+                <?php foreach($products as $p){ ?> <a href="#" class="list-group-item">
+                  <i class="glyphicon glyphicon-user"></i> <?php echo $p->name; ?> 
+                </a> 
+                <?php } ?> 
+              </div> 
+            </div> 
+           </div> 
           </div>
         </div>
       </div>
+    </div>
+  </div>
+</div>
