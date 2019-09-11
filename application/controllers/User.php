@@ -4,7 +4,7 @@ class User extends CI_Controller {
 
 	function __construct(){
 		parent::__construct();
-		if($this->session->userdata('status') != "login"){ redirect(base_url().'welcome?pesan=belumlogin');
+		if($this->session->userdata('status') != "login"){ redirect(base_url().'welcome?message=notloggedin');
 		}
 	}
 	
@@ -18,7 +18,7 @@ class User extends CI_Controller {
 	}
 
 	function logout(){ 
-		$this->session->sess_destroy(); redirect(base_url().'welcome?pesan=logout'); 
+		$this->session->sess_destroy(); redirect(base_url().'welcome?message=loggedout'); 
 	}
 
 	function customer(){ 
@@ -41,3 +41,4 @@ class User extends CI_Controller {
 		$this->load->view('user/category',$data); 
 		$this->load->view('user/footer'); 
 	}
+}

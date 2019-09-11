@@ -13,7 +13,7 @@ class Welcome extends CI_Controller {
 	}
 	
 	function login(){
-		$username = $this->input->post('email'); 
+		$email = $this->input->post('email'); 
 		$password = $this->input->post('password'); 
 		$this->form_validation->set_rules('email','Email','trim|required');
 		$this->form_validation->set_rules('password','Password','trim|required');
@@ -34,7 +34,7 @@ class Welcome extends CI_Controller {
 			$this->session->set_userdata($session); 
 			redirect(base_url().'user'); 
 			}else{ 
-				redirect(base_url().'welcome?pesan=gagal'); 
+				redirect(base_url().'welcome?message=failed'); 
 			} 
 		}else{ 
 			$this->load->view('login'); 

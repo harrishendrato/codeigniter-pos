@@ -37,31 +37,30 @@
                   <div class="text-center">
                     <h1 class="h4 text-gray-900 mb-4">POS APPLICATION</h1>
                     <?php 
-                        if(isset($_GET['pesan'])){ 
-                          if($_GET['pesan'] == "gagal"){ 
-                            echo "<div class='alert alert-danger'>Login gagal! Username dan password salah.</div>"; 
-                              }else if($_GET['pesan'] == "logout"){ 
-                       echo "<div class='alert alert-danger'>Anda telah logout.</div>";
-                      }else if($_GET['pesan'] == "belumlogin"){ 
-                   echo "<div class='alert alert-success'>Silahkan login dulu.</div>";
+                        if(isset($_GET['message'])){ 
+                          if($_GET['message'] == "failed"){ 
+                            echo "<div class='alert alert-danger'>Login failed! Invalid Email and Password.</div>"; 
+                              }else if($_GET['message'] == "loggedout"){ 
+                       echo "<div class='alert alert-danger'>You have logged out.</div>";
+                      }else if($_GET['message'] == "notloggedin"){ 
+                   echo "<div class='alert alert-success'>Please login first.</div>";
                      }
                     }
                         ?>
                   </div>
                   <form method="post" action="<?php echo base_url().'welcome/login' ?>">
-          <div class="form-group">
-            <input type="text" name="email" placeholder="Enter Email Address..." class="form-control">
-            <?php echo form_error('email'); ?>
-          </div>
-          <div class="form-group">
-            <input type="password" name="password" placeholder="Password" class="form-control">
-            <?php echo form_error('password'); ?>
-          </div> 
-          <div class="form-group">
-          
-            <input type="submit" value="Login" class="btn btn-primary btn-block">
-          </div>
-        </form>
+                  <div class="form-group">
+                  <input type="text" name="email" id="email" placeholder="Enter Email Address..." class="form-control">
+                  <?php echo form_error('email'); ?>
+                  </div>
+                  <div class="form-group">
+                  <input type="password" name="password" id="password" placeholder="Password" class="form-control">
+                  <?php echo form_error('password'); ?>
+                  </div> 
+                  <div class="form-group">          
+                  <input type="submit" value="Login" class="btn btn-primary btn-block">
+                  </div>
+                </form>
                 </div>
               </div>
             </div>
