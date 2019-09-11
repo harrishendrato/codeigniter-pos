@@ -73,11 +73,10 @@
 
           <!-- Topbar Navbar -->
           <ul class="navbar-nav ml-auto">
-            <div class="topbar-divider d-none d-sm-block"></div>
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
                 <a href="#" class="nav-link dropdown-toggle" id="user" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo "Welcome! <b>".$this->session->userdata('name'); ?></b></span>
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo "<b>".$this->session->userdata('name'); ?></b></span>
                 <img class="img-profile rounded-circle">
                 </a>
               <!-- Dropdown - User Information -->
@@ -137,5 +136,5 @@
 </table>
 <a href="<?php echo base_url().'user/customer_add'; ?>" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-plus"></span> New Customer</a> 
 </div>
-    </div>
-  </div>
+</div>
+</div>
