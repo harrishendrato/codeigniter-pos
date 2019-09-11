@@ -39,7 +39,7 @@ class User extends CI_Controller
 	function customer_add()
 	{ 
 		$this->load->view('user/header'); 
-		$this->load->view('user/mobil_add'); 
+		$this->load->view('user/customer_add'); 
 		$this->load->view('user/footer'); 
 	}
 
@@ -56,7 +56,9 @@ class User extends CI_Controller
 		{ 
 			$data = array( 
 			'name' => $name, 
-			'address' => $address 
+			'address' => $address,
+			'created_at' => $created_at,
+			'updated_at'=> $updated_at 
 			);
 			$this->m_pos->insert_data($data,'customers'); 
 			redirect(base_url().'user/customer'); 
@@ -94,15 +96,17 @@ class User extends CI_Controller
 				); 
 				$data = array( 
 					'name' => $name, 
-					'address' => $address 
+					'address' => $address,
+					'created_at' => $created_at,
+					'updated_at'=> $updated_at
 				); 
-				$this->m_pos->update_data($where,$data,'customer');
+				$this->m_pos->update_data($where,$data,'customers');
 				redirect(base_url().'user/customer'); 
 			}else{ 
 				$where = array( 
 					'id' => $id 
 				); 
-				$data['customer'] = $this->m_pos->edit_data($where,'customer')->result(); 
+				$data['customers'] = $this->m_pos->edit_data($where,'customers')->result(); 
 				$this->load->view('user/header');
 				$this->load->view('user/customer_edit',$data); 
 				$this->load->view('user/footer'); 
@@ -133,7 +137,6 @@ class User extends CI_Controller
 	function product_add_act(){ 
 		$name = $this->input->post('name');
 		$price = $this->input->post('price');
-		$category_id = $this->input->post('category_id');
 		$created_at = $this->input->post('created_at');
 		$updated_at = $this->input->post('updated_at');
 		$this->form_validation->set_rules('name','Name','required'); 
@@ -143,11 +146,10 @@ class User extends CI_Controller
 				$data = array( 
 				'name' => $name,
 				'price' => $price,
-				'category_id' => $category_id,
 				'created_at' => $created_at,
 				'updated_at'=> $updated_at
 			);
-			$this->m_pos->insert_data($data,'product'); 
+			$this->m_pos->insert_data($data,'products'); 
 			redirect(base_url().'user/product'); 
 		}else{ 
 			$this->load->view('user/header'); 
@@ -160,8 +162,8 @@ class User extends CI_Controller
 		$where = array( 
 			'id' => $id 
 		); 
-		$data['product'] = 
-		$this->m_rental->edit_data($where,'product')->result(); 
+		$data['products'] = 
+		$this->m_pos->edit_data($where,'products')->result(); 
 		$this->load->view('user/header'); 
 		$this->load->view('user/product_edit',$data);
 		 $this->load->view('user/footer'); 
@@ -187,7 +189,7 @@ class User extends CI_Controller
 					'created_id' => $created_at, 
 					'updated_id' => $updated_at 
 				); 
-				$this->m_pos->update_data($where,$data,'product'); redirect(base_url().'user/product'); 
+				$this->m_pos->update_data($where,$data,'products'); redirect(base_url().'user/product'); 
 			}else{ 
 				$where = array( 
 					'id' => $id 
@@ -248,7 +250,7 @@ class User extends CI_Controller
 		$this->m_pos->edit_data($where,'categories')->result(); 
 		$this->load->view('user/header'); 
 		$this->load->view('user/category_edit',$data);
-		 $this->load->view('user/footer'); 
+		$this->load->view('user/footer'); 
 	}
 
 	function category_update(){ 
@@ -273,8 +275,8 @@ class User extends CI_Controller
 				); 
 				$data['categories'] = $this->m_pos->edit_data($where,'categories')->result(); 
 				$this->load->view('user/header');
-				 $this->load->view('user/category_edit',$data); 
-				 $this->load->view('user/footer'); 
+				$this->load->view('user/category_edit',$data); 
+				$this->load->view('user/footer'); 
 		} 
 	}
 

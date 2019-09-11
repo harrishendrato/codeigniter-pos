@@ -98,34 +98,25 @@
 
 <!-- Page Heading -->
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-  <h1 class="h1 mb-0 text-gray-800">Edit Customers</h1>
+  <h1 class="h1 mb-0 text-gray-800">Edit Category</h1>
   <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
 </div>  
 <br/>
-<?php foreach($customers as $cts){ ?>
-<form action="<?php echo base_url().'user/customer_update' ?>"
-method="post">
-<div class="form-group">
-<label>Customer Name</label>
-<input type="text" name="name" value="<?php echo $cts->name; ?>" class="form-control">
-<input type="hidden" name="id" value="<?php echo $cts->id; ?>" class="form-control">
-<?php echo form_error('name'); ?>
-</div>
-<div class="form-group">
-<label>Address</label>
-<textarea name="address" class="form-control"><?php echo
-$cts->address; ?></textarea>
-</div>
-<div class="form-group">
-<label>Created at</label>
-<input type="date" name="created_at" value="<?php echo $cts->created_at; ?>" class="form-control">
-</div>
-<div class="form-group">
-<label>Update at</label>
-<input type="date" name="updated_at" value="<?php echo $cts->updated_at; ?>" class="form-control">
-</div>
-<div class="form-group">
-<input type="submit" value="Save" class="btn btn-primary">
-</div>
+<form action="<?php echo base_url().'user/category_add_act' ?>" method="post"> 
+	<div class="form-group"> 
+		<label>Category Name</label> 
+		<input type="text" name="name" class="form-control"> 
+		<?php echo form_error('name'); ?>
+		</div> 
+		<div class="form-group"> 
+			<label>Created at</label> 
+			<input type="date" name="created_at" class="form-control"> 
+		</div> 
+		<div class="form-group"> 
+			<label>Updated at</label> 
+			<input type="date" name="updated_at" class="form-control"> 
+		</div> 
+		<div class="form-group"> 
+			<input type="submit" value="Save" class="btn btn-primary"> 
+		</div>
 </form>
-<?php } ?>
