@@ -50,7 +50,7 @@
       </li>
 
             <li class="nav-item">
-        <a class="nav-link" href="<?php echo base_url().'user/sales_item' ?>">
+        <a class="nav-link" href="<?php echo base_url().'user/sale_item' ?>">
           <i class="fas fa-check-circle"></i>
           <span>Sale Item</span></a>
       </li>
