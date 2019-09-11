@@ -301,23 +301,21 @@ class User extends CI_Controller
 		}
 	
 		function sale_add_act(){ 
-			$customer_id = $this->input->post('cusutomer_id'); 
-			$plat = $this->input->post('plat'); 
-			$warna = $this->input->post('warna'); 
-			$tahun = $this->input->post('tahun'); 
-			$status = $this->input->post('status'); 
-			$this->form_validation->set_rules('merk','Merk Mobil','required'); 
-			$this->form_validation->set_rules('status','Status Mobil','required'); 
+			$customer_id = $this->input->post('customer_id'); 
+			$total = $this->input->post('total'); 
+			$created_at = $this->input->post('created_at'); 
+			$updated_at = $this->input->post('updated_at'); 
+			$this->form_validation->set_rules('customer_id','Customer ID','required'); 
+			$this->form_validation->set_rules('total','Total','required'); 
 	
 				if($this->form_validation->run() != false){ 
 					$data = array( 
-					'mobil_merk' => $merk, 
-					'mobil_plat' => $plat, 
-					'mobil_warna' => $warna, 
-					'mobil_tahun' => $tahun, 
-					'mobil_status' => $status 
+					'customer_id' => $customer_id, 
+					'total' => $total, 
+					'created_at' => $created_at, 
+					'updated_at' => $updated_at,
 				);
-				$this->m_rental->insert_data($data,'mobil'); 
+				$this->m_pos->insert_data($data,'mobil'); 
 				redirect(base_url().'admin/mobil'); 
 			}else{ 
 				$this->load->view('admin/header'); 
