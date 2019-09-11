@@ -54,11 +54,6 @@
           <span>Sale Item</span></a>
       </li>
 
-      <li class="nav-item">
-        <a class="nav-link" href="<?php echo base_url().'user/sale_transaction' ?>">
-          <i class="fas fa-check-circle"></i>
-          <span>Sale Transaction</span></a>
-      </li>
     </ul>
     <!-- End of Sidebar -->
 
@@ -106,43 +101,94 @@
             <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
           </div>
 
-          <!-- Content Row -->
-          <div class="row"> 
-            <div class="col-lg-4"> 
-              <div class="panel panel-default">
-              <div class="panel-heading"> 
-                <h3 class="panel-title"><i class="glyphicon glyphicon-random arrow-right"></i> Customers</h3> 
-              </div> 
-            <div class="panel-body"> 
-            <div class="list-group"> 
-              <?php foreach($customers as $cts){ ?> 
-                <a href="<?php echo base_url().'user/customer' ?>" class="list-group-item"> 
-                  <i class="glyphicon glyphicon-user"></i> <?php echo $cts->name; ?> 
-                </a> 
-                <?php } ?> </div> 
-              </div> 
-            </div> 
-          </div> 
-          <div class="col-lg-3"> 
-          <div class="panel panel-default"> 
-            <div class="panel-heading"> 
-              <h3 class="panel-title"><i class="glyphicon glyphicon-user o"></i> New Customers</h3> 
-            </div> 
-            <div class="panel-body"> 
-              <div class="list-group"> 
-                <?php foreach($products as $p){ ?> <a href="#" class="list-group-item">
-                  <i class="glyphicon glyphicon-user"></i> <?php echo $p->name; ?> 
-                </a> 
-                <?php } ?> 
-              </div> 
-            </div> 
-           </div> 
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+          <div class="card shadow mb-4">
+            <div class="card-header py-3">
+              <h6 class="m-0 font-weight-bold text-primary">Detail Sale</h6>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="50" cellspacing="0">
+                  <thead>
+                  <tr> 
+				<th>No</th> 
+				<th>Name</th> 
+				<th>Address</th> 
+				<th>Created at</th> 
+				<th>Updated at</th>
+			</tr> 
+	</thead>
+	<tbody>
+		<?php
+		$no = 1;
+    foreach($customers as $cts){ 
+      ?>
+      <tr> 
+        <td><?php echo $no++; ?></td> 
+        <td><?php echo $cts->name ?></td> 
+        <td><?php echo $cts->address ?></td> 
+        <td><?php echo $cts->created_at ?></td> 
+        <td><?php echo $cts->updated_at ?></td>
+      <tr> 
+        <?php
+	}
+	?>
+</tbody>
+                <table class="table table-bordered" id="dataTable" width="50" cellspacing="0">
+                  <thead>
+                  <tr> 
+				<th>No</th> 
+				<th>Name</th> 
+				<th>Price</th> 
+				<th>Category ID</th> 
+				<th>Created at</th> 
+				<th>Updated at</th>
+	</thead>
+	<tbody>
+		<?php
+		$no = 1;
+		foreach($products as $p){
+		?>
+		<tr>
+			<td><?php echo $no++; ?></td>
+			<td><?php echo $p->name ?></td> 
+			<td><?php echo "Rp. ".number_format($p->price); ?></td>
+			<td><?php echo $p->category_id ?></td> 
+			<td><?php echo date('d/m/Y',strtotime($p->created_at)); ?></td>
+			<td><?php echo date('d/m/Y',strtotime($p->updated_at)); ?></td>
+		</tr>
+        <?php
+	}
+	?>
+</tbody>
+                <table class="table table-bordered" id="dataTable" width="50%" cellspacing="0">
+      <thead>
+        <tr>
+        <th>No</th> 
+				<th>Name</th> 
+				<th>Created at</th> 
+				<th>Updated at</th>
+		</tr>
+	</thead>
+	<tbody>
+		<?php
+		$no = 1;
+    foreach($categories as $c){ 
+      ?> 
+      <tr> 
+      <td><?php echo $no++; ?></td> 
+      <td><?php echo $c->name ?></td>
+			<td><?php echo date('d/m/Y',strtotime($c->created_at)); ?></td>
+			<td><?php echo date('d/m/Y',strtotime($c->updated_at)); ?></td>
+		</tr>
+        <?php
+	}
+	?>
+</tbody>
+</table>
 </div>
+</div>
+</div>
+
 <footer class="sticky-footer bg-white">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
@@ -171,4 +217,4 @@
         </div>
       </div>
     </div>
-  </div> 
+  </div>
