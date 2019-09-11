@@ -53,6 +53,12 @@
           <i class="fas fa-check-circle"></i>
           <span>Sale Item</span></a>
       </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="<?php echo base_url().'user/sale_transaction' ?>">
+          <i class="fas fa-check-circle"></i>
+          <span>Sale Transaction</span></a>
+      </li>
     </ul>
     <!-- End of Sidebar -->
 

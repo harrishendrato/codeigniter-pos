@@ -109,15 +109,15 @@
 		</div> 
         <div class="form-group"> 
 			<label>Subtotal</label> 
-			<input type="number" name="subtotal" class="form-control"> 
+			<input type="" name="subtotal" class="form-control"> 
 		</div> 
         <div class="form-group"> 
 			<label>Product ID</label> 
-			<input type="number" name="Product_id" class="form-control"> 
+			<input type="" name="Product_id" class="form-control"> 
 		</div> 
         <div class="form-group"> 
 			<label>Sale ID</label> 
-			<input type="number" name="sale_id" class="form-control"> 
+			<input type="" name="sale_id" class="form-control"> 
 		</div> 
 		<div class="form-group"> 
 			<label>Created at</label> 

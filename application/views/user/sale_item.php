@@ -129,7 +129,7 @@
 					<td><?php echo $si->created_at ?></td> 
 					<td><?php echo $si->updated_at ?></td>
 				<td> 
-					<a class="btn btn-warning btn-sm" href="<?php echo base_url().'user/sale_item_edit/'.$si->id; ?>"><span class="glyphicon glyphicon-plus"></span> Edit</a> 
+					<a class="btn btn-warning btn-sm" href="<?php echo base_url().'user/sale_item_edit/'.$si->id; ?>"><span class="glyphicon glyphicon-plus"></span> Edit</a>
 					<a class="btn btn-danger btn-sm" href="<?php echo base_url().'user/sale_item_delete/'.$si->id; ?>"><span class="glyphicon glyphicon-trash"></span> Delete</a>
 				</td> 
 			</tr> 
