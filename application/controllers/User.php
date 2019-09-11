@@ -338,7 +338,7 @@ class User extends CI_Controller
 			$total = $this->input->post('total');
 			$created_at = $this->input->post('created_at');
 			$updated_at = $this->input->post('updated_at');
-	$this->form_validation->set_rules('customer_id','Customer ID','required');
+			$this->form_validation->set_rules('customer_id','Customer ID','required');
 	
 	
 		if($this->form_validation->run() != false){
