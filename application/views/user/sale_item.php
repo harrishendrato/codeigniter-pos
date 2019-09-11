@@ -98,7 +98,7 @@
 
 <!-- Page Heading -->
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-  <h1 class="h1 mb-0 text-gray-800">Data Customers</h1>
+  <h1 class="h1 mb-0 text-gray-800">Sale Item List</h1>
   <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
 </div>  
 <br/>
@@ -106,9 +106,11 @@
 	<table class="table table-bordered table-striped table-hover" id="table-datatable"> 
 		<thead> 
 			<tr> 
-				<th>No</th> 
-				<th>Name</th> 
-				<th>Address</th> 
+				<th>No</th>  
+				<th>Price</th>
+        <th>Subtotal</th> 
+				<th>Product ID</th>
+        <th>Sale ID</th>
 				<th>Created at</th> 
 				<th>Updated at</th>
 				<th></th>
@@ -117,17 +119,19 @@
 		<tbody> 
 			<?php 
 			$no = 1; 
-			foreach($customers as $cts){ 
+			foreach($sale_items as $si){ 
 				?>
 				<tr> 
-					<td><?php echo $no++; ?></td> 
-					<td><?php echo $cts->name ?></td> 
-					<td><?php echo $cts->address ?></td> 
-					<td><?php echo $cts->created_at ?></td> 
-					<td><?php echo $cts->updated_at ?></td>
+					<td><?php echo $no++; ?></td>  
+					<td><?php echo $si->price ?></td>
+          <td><?php echo $si->subtotal ?></td> 
+					<td><?php echo $si->product_id ?></td>
+					<td><?php echo $si->sale_id ?></td>
+					<td><?php echo $si->created_at ?></td> 
+					<td><?php echo $si->updated_at ?></td>
 				<td> 
-					<a class="btn btn-warning btn-sm" href="<?php echo base_url().'user/customer_edit/'.$cts->id; ?>"><span class="glyphicon glyphicon-plus"></span> Edit</a> 
-					<a class="btn btn-danger btn-sm" href="<?php echo base_url().'user/customer_delete/'.$cts->id; ?>"><span class="glyphicon glyphicon-trash"></span> Delete</a>
+					<a class="btn btn-warning btn-sm" href="<?php echo base_url().'user/sale_item_edit/'.$si->id; ?>"><span class="glyphicon glyphicon-plus"></span> Edit</a> 
+					<a class="btn btn-danger btn-sm" href="<?php echo base_url().'user/sale_item_delete/'.$si->id; ?>"><span class="glyphicon glyphicon-trash"></span> Delete</a>
 				</td> 
 			</tr> 
 			<?php 
@@ -135,7 +139,7 @@
 		?> 
 	</tbody> 
 </table>
-<a href="<?php echo base_url().'user/customer_add'; ?>" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-plus"></span> New Customer</a> 
+<a href="<?php echo base_url().'user/sale_item_add'; ?>" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-plus"></span> New Sale Item</a> 
 </div>
     </div>
   </div>

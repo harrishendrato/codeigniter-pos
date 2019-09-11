@@ -7,7 +7,7 @@
       <!-- Sidebar - Brand -->
       <div class="sidebar-brand d-flex align-items-center justify-content-center">
         <div class="sidebar-brand-icon rotate-n-15">
-          <i clgit aass="fas fa-cash-register"></i>
+          <i class="fas fa-cash-register"></i>
         </div>
         <div class="sidebar-brand-text mx-3"><h1>POS</h1></div>
       </div>
@@ -42,7 +42,7 @@
           <span>Category</span></a>
       </li>
 
-        <li class="nav-item">
+            <li class="nav-item">
         <a class="nav-link" href="<?php echo base_url().'user/sale' ?>">
           <i class="fas fa-check-circle"></i>
           <span>Sale</span></a>
@@ -98,42 +98,29 @@
 
 <!-- Page Heading -->
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-  <h1 class="h1 mb-0 text-gray-800">Data Sales</h1>
+  <h1 class="h1 mb-0 text-gray-800">New Sale</h1>
   <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
-</div> 
-<br/> 
-<div class="table-responsive"> 
-	<table class="table table-bordered table-hover table-striped" id="table-datatable"> 
-		<thead> 
-			<tr> 
-				<th>No</th> 
-        <th>Customer ID</th>
-        <th>Total</th> 
-				<th>Created at</th> 
-				<th>Updated at</th>
-				<th></th>
-			</tr> 
-		</thead> 
-		<tbody> 
-			<?php 
-			$no = 1; 
-			foreach($sales as $s){ 
-				?> 
-				<tr> 
-					<td><?php echo $no++; ?></td> 
-					<td><?php echo $s->customer_id ?></td> 
-					<td><?php echo $s->total ?></td> 
-          <td><?php echo $s->created_at ?></td>
-          <td><?php echo $s->updated_at ?></td>
-					<td> 
-						<a class="btn btn-sm btn-warning" href="<?php echo base_url().'user/sale_edit/'.$s->id; ?>"><span class="glyphicon glyphicon-wrench"></span> Edit</a> 
-						<a class="btn btn-sm btn-danger" href="<?php echo base_url().'user/sale_delete/'.$s->id; ?>"><span class="glyphicon glyphicon-trash"></span> delete</a> 
-					</td> 
-				</tr> 
-				<?php 
-			} 
-			?> 
-		</tbody>
-	</table>
-	<a href="<?php echo base_url().'user/sale_add'; ?>" class="btn btn-sm btn-primary"><span class='glyphicon glyphicon-plus'></span> New Sale</a> 
-</div>
+</div>  
+<br/>
+<form action="<?php echo base_url().'user/sale_add_act' ?>" method="post"> 
+	<div class="form-group"> 
+		<label>Customer ID</label> 
+		<input type="text" name="customer_id" class="form-control"> 
+		<?php echo form_error('customer_id'); ?>
+		</div> 
+        <div class="form-group"> 
+			<label>Total</label> 
+			<input type="" name="total" class="form-control"> 
+		</div> 
+		<div class="form-group"> 
+			<label>Created at</label> 
+			<input type="date" name="created_at" class="form-control"> 
+		</div> 
+		<div class="form-group"> 
+			<label>Updated at</label> 
+			<input type="date" name="updated_at" class="form-control"> 
+		</div> 
+		<div class="form-group"> 
+			<input type="submit" value="Save" class="btn btn-primary"> 
+		</div>
+</form>
