@@ -31,19 +31,19 @@
 
       <!-- Nav Item - Tables -->
       <li class="nav-item">
-        <a class="nav-link" href="<?php echo base_url().'user/product'?>">
+        <a class="nav-link" href="<?php echo base_url().'user/product' ?>">
           <i class="fas fa-check-circle"></i>
           <span>Product</span></a>
       </li>
 
         <li class="nav-item">
-        <a class="nav-link" href="<?php echo base_url().'user/category'?>">
+        <a class="nav-link" href="<?php echo base_url().'user/category' ?>">
           <i class="fas fa-check-circle"></i>
           <span>Category</span></a>
       </li>
 
-          <li class="nav-item">
-        <a class="nav-link" href="<?php echo base_url().'user/sale'?>">
+            <li class="nav-item">
+        <a class="nav-link" href="<?php echo base_url().'user/sale' ?>">
           <i class="fas fa-check-circle"></i>
           <span>Sale</span></a>
       </li>
@@ -75,14 +75,14 @@
           <ul class="navbar-nav ml-auto">
             <div class="topbar-divider d-none d-sm-block"></div>
             <!-- Nav Item - User Information -->
-              <li class="nav-item dropdown no-arrow">
+            <li class="nav-item dropdown no-arrow">
                 <a href="#" class="nav-link dropdown-toggle" id="user" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                 <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo "Welcome! <b>".$this->session->userdata('name'); ?></b></span>
                 <img class="img-profile rounded-circle">
                 </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="<?php echo base_url().'user/logout'?>">
+              <a class="dropdown-item" href="<?php echo base_url().'user/logout'?>">
                   <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                   Logout
                 </a>
@@ -93,50 +93,49 @@
 
         </nav>
         <!-- End of Topbar -->
+		        <!-- Begin Page Content -->
+				<div class="container-fluid">
 
-        <!-- Begin Page Content -->
-        <div class="container-fluid">
-
-          <!-- Page Heading -->
-          <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-            <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
-          </div>
-
-          <!-- Content Row -->
-          <div class="row"> 
-            <div class="col-lg-4"> 
-              <div class="panel panel-default">
-              <div class="panel-heading"> 
-                <h3 class="panel-title"><i class="glyphicon glyphicon-random arrow-right"></i> Customers</h3> 
-              </div> 
-            <div class="panel-body"> 
-            <div class="list-group"> 
-              <?php foreach($customers as $cts){ ?> 
-                <a href="<?php echo base_url().'user/customer' ?>" class="list-group-item"> 
-                  <i class="glyphicon glyphicon-user"></i> <?php echo $cts->name; ?> 
-                </a> 
-                <?php } ?> </div> 
-              </div> 
-            </div> 
-          </div> 
-          <div class="col-lg-3"> 
-          <div class="panel panel-default"> 
-            <div class="panel-heading"> 
-              <h3 class="panel-title"><i class="glyphicon glyphicon-user o"></i> New Customers</h3> 
-            </div> 
-            <div class="panel-body"> 
-              <div class="list-group"> 
-                <?php foreach($products as $p){ ?> <a href="#" class="list-group-item">
-                  <i class="glyphicon glyphicon-user"></i> <?php echo $p->name; ?> 
-                </a> 
-                <?php } ?> 
-              </div> 
-            </div> 
-           </div> 
-          </div>
-        </div>
-      </div>
+<!-- Page Heading -->
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+  <h1 class="h1 mb-0 text-gray-800">Data Customers</h1>
+  <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+</div>  
+<br/>
+<div class="table-responsive">
+	<table class="table table-bordered table-striped table-hover" id="table-datatable"> 
+		<thead> 
+			<tr> 
+				<th>No</th> 
+				<th>Name</th> 
+				<th>Address</th> 
+				<th>Created at</th> 
+				<th>Updated at</th>
+				<th></th>
+			</tr> 
+		</thead> 
+		<tbody> 
+			<?php 
+			$no = 1; 
+			foreach($customers as $cts){ 
+				?>
+				<tr> 
+					<td><?php echo $no++; ?></td> 
+					<td><?php echo $cts->name ?></td> 
+					<td><?php echo $cts->address ?></td> 
+					<td><?php echo $cts->created_at ?></td> 
+					<td><?php echo $cts->updated_at ?></td>
+				<td> 
+					<a class="btn btn-warning btn-sm" href="<?php echo base_url().'user/customer_edit/'.$cts->id; ?>"><span class="glyphicon glyphicon-plus"></span> Edit</a> 
+					<a class="btn btn-danger btn-sm" href="<?php echo base_url().'user/customer_delete/'.$cts->id; ?>"><span class="glyphicon glyphicon-trash"></span> Delete</a>
+				</td> 
+			</tr> 
+			<?php 
+		} 
+		?> 
+	</tbody> 
+</table>
+<a href="<?php echo base_url().'user/customer_add'; ?>" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-plus"></span> New Customer</a> 
+</div>
     </div>
   </div>
-</div>
