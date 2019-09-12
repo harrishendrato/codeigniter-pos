@@ -55,10 +55,10 @@ class User extends CI_Controller
 		if($this->form_validation->run() != false)
 		{ 
 			$data = array( 
-			'name' => $name, 
-			'address' => $address,
-			'created_at' => $created_at,
-			'updated_at'=> $updated_at 
+				'name' => $name, 
+				'address' => $address,
+				'created_at' => $created_at,
+				'updated_at'=> $updated_at 
 			);
 			$this->m_pos->insert_data($data,'customers'); 
 			redirect(base_url().'user/customer'); 
@@ -98,10 +98,10 @@ class User extends CI_Controller
 				'id' => $id 
 			); 
 			$data = array( 
-					'name' => $name, 
-					'address' => $address,
-					'created_at' => $created_at,
-					'updated_at'=> $updated_at
+				'name' => $name, 
+				'address' => $address,
+				'created_at' => $created_at,
+				'updated_at'=> $updated_at
 			); 
 			$this->m_pos->update_data($where,$data,'customers');
 			redirect(base_url().'user/customer'); 
@@ -311,7 +311,7 @@ class User extends CI_Controller
 	{ 
 		$where = array( 
 			'id' => $id
-			); 
+		); 
 		$this->m_pos->delete_data($where,'categories');
 		redirect(base_url().'user/category'); 
 	} 
@@ -439,10 +439,10 @@ class User extends CI_Controller
 		if($this->form_validation->run() != false)
 		{ 
 			$data = array( 
-			'price' => $price, 
-			'subtotal' => $subtotal,
-			'product_id' => $product_id,
-			'sale_id' => $sale_id 
+				'price' => $price, 
+				'subtotal' => $subtotal,
+				'product_id' => $product_id,
+				'sale_id' => $sale_id 
 			);
 			$this->m_pos->insert_data($data,'sale_items'); 
 			redirect(base_url().'user/sale_item'); 
@@ -515,5 +515,58 @@ class User extends CI_Controller
 		); 
 		$this->m_pos->delete_data($where,'sale_items');
 		redirect(base_url().'user/sale_item'); 
-	} 
+	}
+
+	function report()
+	{
+		$from = $this->input->post('from');
+		$untill = $this->input->post('until');
+		$this->form_validation->set_rules('from','Out of date','required');
+		$this->form_validation->set_rules('untill','Till date','required');
+		if($this->form_validation->run() != false)
+		{
+			$data['report'] = $this->db->query('SELECT id, price, subtotal, product_id, sale_id, created_at, updated_at FROM sale_items', '$sale_items as $si')->result();
+			$this->load->view('user/header');
+			$this->load->view('user/filter_report',$data);
+			$this->load->view('user/footer');
+		}
+		else
+		{
+			$this->load->view('user/header');
+			$this->load->view('user/report');
+			$this->load->view('user/footer');
+		}
+	}
+
+	function laporan_print()
+	{
+		$from = $this->input->get('from');
+		$untill = $this->input->get('untill');
+		if($from != "" && $untill != "")
+		{
+			$data['report'] = $this->db->query("SELECT id, price, subtotal, product_id, sale_id, created_at, updated_at FROM sale_items;")->result();
+			$this->load->view('user/print_report',$data);
+		}
+		else
+		{
+			redirect("user/report");
+		}
+	}
+
+	function laporan_pdf()
+	{
+		$this->load->library('dompdf_gen');
+		$from = $this->input->get('from');
+		$untill = $this->input->get('untill');
+		$data['report'] = $this->db->query("SELECT id, price, subtotal, product_id, sale_id, created_at, updated_at FROM sale_items;")->result();
+		$this->load->view('user/report_pdf', $data);
+		$paper_size = 'A4';
+		$orientation = 'landscape';
+		$html = $this->output->get_output();
+		$this->dompdf->set_paper($paper_size, $orientation);
+		$this->dompdf->load_html($html);
+		$this->dompdf->render();
+		$this->dompdf->stream("report.pdf", array('Attachment'=>0));
+	}
+
 }
