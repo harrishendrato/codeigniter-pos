@@ -98,11 +98,7 @@
 
   										<!-- Page Heading -->
   										<div class="d-sm-flex align-items-center justify-content-between mb-4">
-  											<h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-  											<a href="<?php echo base_url().'user/report'?>" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
-  										</div>
-  										<div class="page-header">
-  											<h3>Report</h3>
+  											<h1 class="h3 mb-0 text-gray-800">Filter Report</h1>
   										</div>
   										<form method="post" action="<?php echo base_url().'user/report'?>">
   											<div class="form-group">
@@ -118,99 +114,94 @@
   											<div class="form-group">
   												<input type="submit" value="search" name="cari" class="btn
   												btn-sm btn-primary">
-  											</div>
-  										</form>
-  										<div class="btn-group">
-  											<a class="btn btn-warning btn-sm" href="<?php echo base_url().'user/report_pdf/?from='.set_value('from').'&untill='.set_value('untill') ?>"><span class="glyphicon glyphiconprint"></span> Print PDF</a>
-  											<a class="btn btn-default btn-sm" href="<?php echo base_url().'user/print_report/?from='.set_value('from').'&untill='.set_value('untill') ?>"><span class="glyphicon glyphiconprint"></span> Print</a>
+   										<div class="btn-group">
+  											<a class="btn btn-warning btn-sm" href="<?php echo base_url().'user/report_pdf'?>"><span class="glyphicon glyphiconprint"></span> Print PDF</a>
   										</div>
-  										<br/>
-  										<br/>
-  										<div class="table-responsive">
-  											<table border="1" class="table table-striped table-hover tablebordered" id="table-datatable">
-  												<thead>
-  													<tr>
-  														<th>No</th>  
-  														<th>Product ID</th>
-  														<th>Sale ID</th>
-  														<th>Created at</th> 
-  														<th>Updated at</th>
-  														<th>Price</th> 
-  														<th>Subtotal</th>
-  														<th></th>
-  													</tr>
-  												</thead>
-  												<tbody>
-  													<?php 
-  													$no = 1; 
-  													foreach ($sale_items as $si)
-  													{ 
-  														?> 
-  														<tr> 
-  															<td><?php echo $no++; ?></td>
-  															<td><?php echo $si->product_id ?></td>
-  															<td><?php echo $si->sale_id ?></td>
-  															<td><?php echo date('d/m/Y',strtotime($si->created_at)); ?></td>
-  															<td><?php echo date('d/m/Y',strtotime($si->updated_at)); ?></td>
-  															<td>
-  																<?php
-  																if($si->subtotal =="0000-00-00")
-  																{
-  																	echo "-";
-  																}
-  																else
-  																{
-  																	echo "Rp. ".number_format($si->price);
-  																}
-  																?>
-  															</td>
-  															<td>
-  																<?php echo "Rp. ".number_format($si->subtotal)." ,-"; ?>
-  															</td>
-  															<td>
-  																<?php
-  																if($si->sale_id == "1"){
-  																	echo "Selesai";
-  																}
-  																else
-  																{
-  																	echo "-";
-  																}
-  																?>
-  															</td>
+  										<a class="btn btn-dark btn-sm" href="<?php echo base_url().'user/print_report'?>"><span class="glyphicon glyphiconprint"></span> Print</a>
+  									</div>
+  									<br/>
+  									<br/>
+  									<div class="card shadow mb-4">
+  										<div class="card-header py-3">
+  											<h6 class="m-0 font-weight-bold text-primary">Sales Report</h6>
+  										</div>
+  										<div class="card-body">
+  											<div class="table-responsive">
+  												<table class="table table-bordered" id="dataTable" width="50" cellspacing="0">
+  													<thead>
+  														<tr>
+  															<th>No</th>  
+  															<th>Product ID</th>
+  															<th>Sale ID</th>
+  															<th>Created at</th> 
+  															<th>Updated at</th>
+  															<th>Price</th> 
+  															<th>Subtotal</th>
   														</tr>
-  														<?php
-  													}
-  													?>
-  												</tbody>
-  											</table>
+  													</thead>
+  													<tbody>
+  														<?php 
+  														$no = 1; 
+  														foreach ($sale_items as $si)
+  														{ 
+  															?> 
+  															<tr> 
+  																<td><?php echo $no++; ?></td>
+  																<td><?php echo $si->product_id ?></td>
+  																<td><?php echo $si->sale_id ?></td>
+  																<td><?php echo date('d/m/Y',strtotime($si->created_at)); ?></td>
+  																<td><?php echo date('d/m/Y',strtotime($si->updated_at)); ?></td>
+  																<td>
+  																	<?php
+  																	if($si->subtotal =="0000-00-00")
+  																	{
+  																		echo "-";
+  																	}
+  																	else
+  																	{
+  																		echo "Rp. ".number_format($si->price);
+  																	}
+  																	?>
+  																</td>
+  																<td>
+  																	<?php echo "Rp. ".number_format($si->subtotal)." ,-"; ?>
+  																</td>
+  															</tr>
+  															<?php
+  														}
+  														?>
+  													</tbody>
+  												</table>
+  											</div>
   										</div>
-  										<footer class="sticky-footer bg-white">
-  											<div class="container my-auto">
-  												<div class="copyright text-center my-auto">
-  													<span>Copyright &copy; Harris Hendrato 2019</span>
+  										</div>
+  									</form>
+  											<footer class="sticky-footer bg-white">
+  												<div class="container my-auto">
+  													<div class="copyright text-center my-auto">
+  														<span>Copyright &copy; Harris Hendrato 2019</span>
+  													</div>	
+  												</div>
+  											</footer>
+  										</div>
+  									</div>
+  									<a class="scroll-to-top rounded" href="#page-top">
+  										<i class="fas fa-angle-up"></i>
+  									</a>
+  									<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  										<div class="modal-dialog" role="document">
+  											<div class="modal-content">
+  												<div class="modal-header">
+  													<h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+  													<button class="close" type="button" data-dismiss="modal" aria-label="Close">
+  														<span aria-hidden="true">×</span>
+  													</button>
+  												</div>
+  												<div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+  												<div class="modal-footer">
+  													<button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+  													<a class="btn btn-primary" href="<?php echo base_url().'user/logout'?>">Logout</a>
   												</div>
   											</div>
-  										</footer>
-  									</div>
-  								</div>
-  								<a class="scroll-to-top rounded" href="#page-top">
-  									<i class="fas fa-angle-up"></i>
-  								</a>
-  								<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  									<div class="modal-dialog" role="document">
-  										<div class="modal-content">
-  											<div class="modal-header">
-  												<h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-  												<button class="close" type="button" data-dismiss="modal" aria-label="Close">
-  													<span aria-hidden="true">×</span>
-  												</button>
-  											</div>
-  											<div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-  											<div class="modal-footer">
-  												<button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-  												<a class="btn btn-primary" href="<?php echo base_url().'user/logout'?>">Logout</a>
-  											</div>
   										</div>
   									</div>
-  								</div>

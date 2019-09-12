@@ -98,11 +98,7 @@
 
   										<!-- Page Heading -->
   										<div class="d-sm-flex align-items-center justify-content-between mb-4">
-  											<h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-  											<a href="<?php echo base_url().'user/report'?>" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
-  										</div>
-  										<div class="page-header">
-  											<h3>Report</h3>
+  											<h1 class="h1 mb-0 text-gray-800">Generate Report</h1>
   										</div>
   										<form method="post" action="<?php echo base_url().'user/report'?>">
   											<div class="form-group">
