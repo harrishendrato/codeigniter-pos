@@ -55,29 +55,19 @@
                         ?>
                   </div>
                   <form method="post" action="<?php echo base_url().'welcome/login' ?>">
-                  <div class="form-group">
-                  <input type="text" name="email" id="email" placeholder="Enter Email Address..." class="form-control">
-                  <?php echo form_error('email'); ?>
-                  </div>
-                  <div class="form-group">
-                  <input type="password" name="password" id="password" placeholder="Password" class="form-control">
-                  <?php echo form_error('password'); ?>
-                  </div> 
-                  <div class="form-group">          
-                  <input type="submit" value="Login" class="btn btn-primary btn-block">
-                  </div>
-                </form>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-    </div>
-
-  </div>
+					          <div class="form-group">
+						        <input type="text" name="email" id="email" placeholder="Enter your email address.." class="form-control">
+						          <?php echo form_error('email'); ?>
+				        	</div>
+				          	<div class="form-group">
+					            	<input type="password" name="password" id="password" placeholder="password" class="form-control">
+					        	<?php echo form_error('password'); ?>
+				        	</div> 
+				        	<div class="form-group">
+					        	<input type="submit" value="Login" class="btn btn-primary btn-round btn-lg btn-block">
+				  	</div>
+			  	</form>
+                  
 
   <!-- Bootstrap core JavaScript-->
   <script src="<?= base_url('assets/'); ?>vendor/jquery/jquery.min.js"></script>

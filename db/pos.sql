@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 11, 2019 at 10:04 AM
+-- Generation Time: Sep 12, 2019 at 03:05 AM
 -- Server version: 10.1.36-MariaDB
 -- PHP Version: 7.2.10
 
@@ -41,7 +41,8 @@ CREATE TABLE `categories` (
 --
 
 INSERT INTO `categories` (`id`, `name`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'itaque', '2019-09-06 21:38:35', '2019-09-06 21:38:35', NULL);
+(1, 'itaque', '2019-09-06 21:38:35', '2019-09-06 21:38:35', NULL),
+(2, 'uyio', '2019-09-11 17:00:00', '2019-09-11 17:00:00', NULL);
 
 -- --------------------------------------------------------
 
@@ -63,7 +64,11 @@ CREATE TABLE `customers` (
 --
 
 INSERT INTO `customers` (`id`, `name`, `address`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'Wilfredo Mertz', '16370 Botsford Landing Suite 553\nJocelynville, MT 67003', '2019-09-06 21:38:35', '2019-09-06 21:38:35', NULL);
+(1, 'Wilfredo Mertz', '16370 Botsford Landing Suite 553\r\nJocelynville\r\n', '2019-09-06 21:38:35', '2019-09-06 21:38:35', NULL),
+(2, 'Jhoko Boyoch', '1908 Groove Street, TDJ City', '2019-09-10 23:44:27', '2019-09-10 23:44:27', NULL),
+(3, 'Stacky Brose', '17654 Peace Village', '2019-09-11 02:22:00', '2019-09-11 02:22:00', NULL),
+(4, 'Johnny Cool', '18976 Born Street, CJ', '2019-09-10 20:00:00', '2019-09-10 20:00:00', NULL),
+(6, 'Doni', '8908 Born Street, Calimornia', '2019-09-10 17:00:00', '2019-09-11 17:00:00', NULL);
 
 -- --------------------------------------------------------
 
@@ -107,7 +112,8 @@ INSERT INTO `products` (`id`, `name`, `price`, `category_id`, `created_at`, `upd
 (7, 'voluptates', '21.00', 1, '2019-09-06 21:38:35', '2019-09-06 21:38:35', NULL),
 (8, 'velit', '9.00', 1, '2019-09-06 21:38:35', '2019-09-06 21:38:35', NULL),
 (9, 'fugit', '4491942.00', 1, '2019-09-06 21:38:35', '2019-09-06 21:38:35', NULL),
-(10, 'at', '842.00', 1, '2019-09-06 21:38:35', '2019-09-06 21:38:35', NULL);
+(10, 'at', '842.00', 1, '2019-09-06 21:38:35', '2019-09-06 21:38:35', NULL),
+(11, 'iop', '122.00', 0, '2019-09-11 17:00:00', '2019-09-11 17:00:00', NULL);
 
 -- --------------------------------------------------------
 
@@ -122,6 +128,14 @@ CREATE TABLE `sales` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `sales`
+--
+
+INSERT INTO `sales` (`id`, `customer_id`, `total`, `created_at`, `updated_at`) VALUES
+(1, 1, '234.00', '2019-09-11 01:00:00', '2019-09-11 01:00:00'),
+(2, 1, '124.00', '2019-09-11 17:00:00', '2019-09-11 17:00:00');
 
 -- --------------------------------------------------------
 
@@ -139,6 +153,13 @@ CREATE TABLE `sale_items` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `sale_items`
+--
+
+INSERT INTO `sale_items` (`id`, `qty`, `price`, `subtotal`, `product_id`, `sale_id`, `created_at`, `updated_at`) VALUES
+(1, 0, '125.00', '150.00', 10, 1, '2019-09-10 19:29:17', '2019-09-10 19:29:17');
 
 -- --------------------------------------------------------
 
@@ -224,37 +245,37 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `sales`
 --
 ALTER TABLE `sales`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `sale_items`
 --
 ALTER TABLE `sale_items`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables
