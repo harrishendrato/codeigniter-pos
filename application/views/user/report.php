@@ -116,7 +116,7 @@
   												<?php echo form_error('untill'); ?>
   											</div>
   											<div class="form-group">
-  												<input type="submit" value="search" name="cari" class="btn
+  												<input type="submit" value="search" name="search" class="btn
   												btn-sm btn-primary">
   											</div>
   										</form>

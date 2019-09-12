@@ -525,7 +525,7 @@ class User extends CI_Controller
 		$this->form_validation->set_rules('untill','Till date','required');
 		if($this->form_validation->run() != false)
 		{
-			$data['report'] = $this->db->query('SELECT id, price, subtotal, product_id, sale_id, created_at, updated_at FROM sale_items', '$sale_items as $si')->result();
+			$data['sale_items'] = $this->db->query('SELECT id, price, subtotal, product_id, sale_id, created_at, updated_at FROM sale_items')->result();
 			$this->load->view('user/header');
 			$this->load->view('user/filter_report',$data);
 			$this->load->view('user/footer');
