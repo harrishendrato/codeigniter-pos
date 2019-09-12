@@ -22,17 +22,17 @@ class Welcome extends CI_Controller {
 				'email' => $email, 
 				'password' => md5($password) 
 			);
-		$data = $this->m_pos->edit_data($where,'users'); 
-		$d = $this->m_pos->edit_data($where,'users')->row();
-		$cek = $data->num_rows();
-		if($cek > 0){
-			$session = array( 
-				'id'=> $d->id, 
-				'name'=> $d->name, 
-				'status' => 'login' 
-			); 
-			$this->session->set_userdata($session); 
-			redirect(base_url().'user'); 
+			$data = $this->m_pos->edit_data($where,'users'); 
+			$d = $this->m_pos->edit_data($where,'users')->row();
+			$cek = $data->num_rows();
+			if($cek > 0){
+				$session = array( 
+					'id'=> $d->id, 
+					'name'=> $d->name, 
+					'status' => 'login' 
+				); 
+				$this->session->set_userdata($session); 
+				redirect(base_url().'user'); 
 			}else{ 
 				redirect(base_url().'welcome?message=failed'); 
 			} 

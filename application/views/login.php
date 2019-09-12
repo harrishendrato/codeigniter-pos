@@ -37,48 +37,48 @@
                   <div class="text-center">
                     <h1 class="h1 text-gray-900 mb-4">POS</h1>
                     <?php 
-                        if(isset($_GET['message']))
-                        { 
-                          if($_GET['message'] == "failed")
-                          { 
-                            echo "<div class='alert alert-danger'>Login failed! Invalid Email and Password.</div>"; 
-                          }
-                          else if($_GET['message'] == "logout")
-                          { 
-                            echo "<div class='alert alert-danger'>You have logout.</div>";
-                          }
-                          else if($_GET['message'] == "notlogin")
-                          { 
-                            echo "<div class='alert alert-success'>Please login first.</div>";
-                          }
-                        }
-                        ?>
+                    if(isset($_GET['message']))
+                    { 
+                      if($_GET['message'] == "failed")
+                      { 
+                        echo "<div class='alert alert-danger'>Login failed! Invalid Email and Password.</div>"; 
+                      }
+                      else if($_GET['message'] == "logout")
+                      { 
+                        echo "<div class='alert alert-danger'>You have logout.</div>";
+                      }
+                      else if($_GET['message'] == "notlogin")
+                      { 
+                        echo "<div class='alert alert-success'>Please login first.</div>";
+                      }
+                    }
+                    ?>
                   </div>
                   <form method="post" action="<?php echo base_url().'welcome/login' ?>">
-					          <div class="form-group">
-						        <input type="text" name="email" id="email" placeholder="Enter your email address.." class="form-control">
-						          <?php echo form_error('email'); ?>
-				        	</div>
-				          	<div class="form-group">
-					            	<input type="password" name="password" id="password" placeholder="password" class="form-control">
-					        	<?php echo form_error('password'); ?>
-				        	</div> 
-				        	<div class="form-group">
-					        	<input type="submit" value="Login" class="btn btn-primary btn-round btn-lg btn-block">
-				  	</div>
-			  	</form>
-                  
+                   <div class="form-group">
+                    <input type="text" name="email" id="email" placeholder="Enter your email address.." class="form-control">
+                    <?php echo form_error('email'); ?>
+                  </div>
+                  <div class="form-group">
+                    <input type="password" name="password" id="password" placeholder="password" class="form-control">
+                    <?php echo form_error('password'); ?>
+                  </div> 
+                  <div class="form-group">
+                    <input type="submit" value="Login" class="btn btn-primary btn-round btn-lg btn-block">
+                  </div>
+                </form>
+                
 
-  <!-- Bootstrap core JavaScript-->
-  <script src="<?= base_url('assets/'); ?>vendor/jquery/jquery.min.js"></script>
-  <script src="<?= base_url('assets/'); ?>vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+                <!-- Bootstrap core JavaScript-->
+                <script src="<?= base_url('assets/'); ?>vendor/jquery/jquery.min.js"></script>
+                <script src="<?= base_url('assets/'); ?>vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-  <!-- Core plugin JavaScript-->
-  <script src="<?= base_url('assets/'); ?>vendor/jquery-easing/jquery.easing.min.js"></script>
+                <!-- Core plugin JavaScript-->
+                <script src="<?= base_url('assets/'); ?>vendor/jquery-easing/jquery.easing.min.js"></script>
 
-  <!-- Custom scripts for all pages-->
-  <script src="<?= base_url('assets/'); ?>js/sb-admin-2.min.js"></script>
+                <!-- Custom scripts for all pages-->
+                <script src="<?= base_url('assets/'); ?>js/sb-admin-2.min.js"></script>
 
-</body>
+              </body>
 
-</html>
+              </html>
